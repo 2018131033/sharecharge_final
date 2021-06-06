@@ -72,7 +72,7 @@ router.get('/',async (req,res)=>{
         // if Owner declined the request
         if(yesorno==1){
             await Users.update(
-                {waiting_charger: -1},
+                {waiting_charger: `${-userKey}`},
                 {where:{email: `${userEmail}`}}
             );
         }

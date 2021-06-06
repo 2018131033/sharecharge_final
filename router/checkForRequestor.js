@@ -24,8 +24,13 @@ router.get('/',async (req,res)=>{
         where: {email: `${userEmail}`}
     });
     waitingCharger = waitingCharger['waiting_charger'];
-    
+    let you_are_declined = false;
+
     if(waitingCharger!==0){
+        if(waitingCharger<0){
+            you_are_declined=true;
+            waitingCharger= -waitingCharger;
+        }
         let ownerEmail = await Chargers.findOne({
             raw: true,
             attributes: ['email'],
@@ -82,13 +87,13 @@ router.get('/',async (req,res)=>{
             let newcurOwnerCoin = curOwnerCoin+totalCost;
             
             // change waiting_charger back to default value
-            if(waitingCharger<0){
+            if(you_are_declined){
                 Users.update(
                     {waiting_charger: 0},
                     {where:{email: `${userEmail}`}}
                 );
-                //res.send("your request was not accepted by provider");
-                res.send('1');
+                res.send("your request was not accepted by provider");
+                //res.send(1);
             }
             else{ 
                 //res.send("Your request was not accepted by provider.");
@@ -146,21 +151,21 @@ router.get('/',async (req,res)=>{
                 }
                 catch(error){
                     console.log(error);
-                    //res.send("Server error. This wouldn't happen")
-                    res.send('0');
+                    res.send("Server error. This wouldn't happen")
+                    //res.send(0);
                 }
             }
         }
         else{
             //res.json({'userEmail':userEmail,'userKey':userKey,'starting':starting_time,'ending':ending_time,
             //    'waitingCharger':waitingCharger,'ownerEmail':ownerEmail,'reservationKey':reservationKey});
-            //res.send("Your request was not regarded by provider yet.");
-            res.send('2');
+            res.send("Your request was not regarded by provider yet.");
+            //res.send(2);
         }
     }
     else{
-        //res.send("You shouldn't have called this router.");
-        res.send('3');
+        res.send("You shouldn't have called this router.");
+        //res.send(3);
     }
     
 })
