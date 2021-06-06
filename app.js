@@ -13,6 +13,9 @@ const checkForOwnerRouter = require('./router/checkForOwner');
 const admitByOwnerRouter = require('./router/admitByOwner');
 const checkForRequestorRouter = require('./router/checkForRequestor');
 const applyPaymentRouter = require('./router/applyPayment');
+const addChargerRouter = require('./router/addCharger');
+
+app.use('/addCharger/:price_per_hour/:starting_time/:ending_time/:x/:y/:address_name/:region_1depth_name/:region_2depth_name/:region_3depth_name/:image_src/:email/:owner_name',addChargerRouter);
 
 app.use('/', mainRouter);
 app.use('/login',loginRouter);// /login?email=kb064315@gmail.com&token=2
