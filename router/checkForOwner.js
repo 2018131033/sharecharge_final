@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
-const User = require('../models').Users;
+const Users = require('../models').Users;
 const Chargers = require("../models").Chargers
 const Reservations = require("../models").Reservations;
 
@@ -52,17 +52,6 @@ router.get('/',async (req,res)=>{
         });
         userKey= userKey['time_'+starting_time.toString()];
         userKey = -userKey;
-
-        // update info of Reservation
-        for(inspectTime=starting_time;inspectTime<=ending_time;inspectTime++){
-            let whichtime = 'time_'+inspectTime.toString();
-            let updateData= {};
-            updateData[`${whichtime}`] = userKey;
-            await Reservations.update(
-                updateData,
-                {where:{reservation_key: `${reservationKey}`}}
-            );
-        }
         
         let userEmail = await Users.findOne({
             raw: true,
@@ -72,7 +61,8 @@ router.get('/',async (req,res)=>{
         res.json({"starting_time":starting_time, "ending_time":ending_time, "email":userEmail});
     }
     else{
-        res.send("No current reservation");
+        //res.send("No current reservation");
+        res.json({"starting_time":null, "ending_time":null, "email":null});
     }
     
 })

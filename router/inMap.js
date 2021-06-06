@@ -57,26 +57,3 @@ let inMap = async (req,res) => {
     
 }
 module.exports = router;
-//module.exports = inMap
-
-/*let inMap = async (req,res) => {
-    let max_x =req.max_x
-    let max_y = req.max_y;
-    let min_x = req.min_x
-    let min_y = req.min_y;
-    
-    let chargers_in_range = await Chargers.findAll({
-        raw:true,
-        where: {
-            available_time_left: 1,
-            [Op.and]:[
-                {x : {[Op.gte]: `${min_x}`}},
-                {x : {[Op.lte]: `${max_x}`}},
-                {y : {[Op.gte]: `${min_y}`}},
-                {y : {[Op.lte]: `${max_y}`}}
-            ]
-        }
-    });
-    console.log(chargers_in_range);
-    res.send(chargers_in_range)
-}*/

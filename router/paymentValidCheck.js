@@ -86,6 +86,10 @@ router.get('/',async (req,res)=>{
                         {where:{reservation_key: `${reservationKey}`}}
                     );
                 }
+                await Users.update(
+                    {waiting_charger:`${chargerKey}`},
+                    {where:{email: `${userEmail}`}}
+                );
                 res.send("You can change"); // GOOD TO GO!
             }
         }

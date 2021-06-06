@@ -36,7 +36,13 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
         unique: false,
         defaultValue: 0
-      }
+      },
+      waiting_charger:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique:false,
+        defaultValue: 0
+      },
     },{
       timestamps: false
     });

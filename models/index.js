@@ -21,9 +21,5 @@ Object.keys(db).forEach((modelName)=>{
     }
 });
 
-// //모델간의 관계를 정의한다.
-// db.Users.hasMany(db.Chargers);
-// db.Chargers.belongsTo(db.Users);
-// db.Chargers.hasOne(db.Reservations);
 
 module.exports = db;

@@ -29,25 +29,3 @@ router.get('/',async (req,res,next)=>{
 })
 
 module.exports = router;
-///login?email=sr7418@naver.com&token=0
-/*
-module.exports = router;
-const letMeIn = async function loginFunction(res,req){
-    let responseData;
-   await User.findOne({raw:true,
-        where: {email: req.query.email}
-    })
-        .then(function(user){
-            if(user==null || user.sns_token!=req.query.token){
-                responseData = {'result':'no'};
-                res.json(responseData);
-                console.log('로그인 실패');
-            } 
-            else{
-                responseData = {'result' : 'ok'};
-                res.json(responseData);
-                console.log('로그인 성공');
-            }
-        });
-  }
-  module.exports = letMeIn;*/

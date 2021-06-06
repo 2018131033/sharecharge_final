@@ -81,29 +81,8 @@ router.get('/',async (req,res)=>{
 
 
 
-//const charger_list= 
-const charger_list = async (req,res) => { 
-    
-        //return chargers_near
-
-   
-   
-    /*available_chargers.forEach(async charger => {
-        console.log(charger.x)
-        let {add,Distance} = await deter(user_lat,user_lng,charger.x,charger.y)
-        if (add){
-            console.log(Distance)
-            charger.distance_from = Distance;
-            chargers_near.push(charger)
-        }; 
-    })*/
-
-};
-
-
 module.exports = router;
 
-//module.exports = charger_list;
 
 
 
