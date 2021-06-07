@@ -3,6 +3,7 @@ const router = express.Router({mergeParams: true});
 const users = require('../models').Users;
 
 
+
 router.get('/',async (req,res)=>{
         let purchase = req.params.amount;
         console.log(req.params.email)
