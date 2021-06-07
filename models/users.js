@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       telephone_num: {
         type: DataTypes.STRING(45),
         allowNull: true,
-        unique: true,
+        unique: false,
         defaultValue: null
       },
       coin: {
