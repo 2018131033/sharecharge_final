@@ -16,7 +16,11 @@ const applyPaymentRouter = require('./router/applyPayment');
 const addChargerRouter = require('./router/addCharger');
 
 app.use('/addCharger/:price_per_hour/:starting_time/:ending_time/:x/:y/:address_name/:region_1depth_name/:region_2depth_name/:region_3depth_name/:image_src/:email/:owner_name',addChargerRouter);
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use('/', mainRouter);
 app.use('/login',loginRouter);// /login?email=kb064315@gmail.com&token=2
 app.use("/signup/:name/:email/:telephone_num/:sns_token",signupRouter); // /signup/Josejusn/b064315@gmail.com/010200797/5
@@ -56,5 +60,5 @@ sequelize.sync();
 
 
 
-const PORT = 3306;
+const PORT = 3308;
 app.listen(PORT);
