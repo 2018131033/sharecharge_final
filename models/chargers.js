@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: null
       },
       address_name: {
-        type: DataTypes.STRING(45),
+        type: DataTypes.STRING(100),
         allowNull: true,
         unique: false,
         defaultValue: null

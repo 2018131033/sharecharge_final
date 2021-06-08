@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: 0
       },
       sns_token:{
-        type: DataTypes.STRING(45),
+        type: DataTypes.STRING(5000),
         allowNull: true,
         unique: false,
         defaultValue: 0

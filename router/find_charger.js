@@ -4,7 +4,8 @@ const d = require("./utils/distance");
 const Reservation  = require('../models').Reservations
 const Charger = require('../models').Chargers
 router.get('/',async (req,res)=>{
-    let user_lat = req.params.current_lat; 
+    try{
+        let user_lat = req.params.current_lat; 
     let user_lng = req.params.current_lng;
     user_lat = parseFloat(user_lat);
     user_lng = parseFloat(user_lng);
@@ -18,6 +19,7 @@ router.get('/',async (req,res)=>{
         now.toString
         let find = 'time_'+now
         let booked = chargers[i][`${find}`]
+        
 
         if(booked == 0){
             free_chargers.push(chargers[i].reservation_key)
@@ -76,7 +78,12 @@ router.get('/',async (req,res)=>{
     })
     console.log(chargers_near)
     res.send({chargers_near})
-    }
+    }catch(e){
+        res.send(e)
+    }}
+    
+    
+
 )
 
 
