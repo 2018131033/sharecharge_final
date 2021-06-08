@@ -11,8 +11,10 @@ router.get('/',async (req,res,next)=>{
         let ending_time = req.params.ending_time;
         let url = req.params.image_src
         url.toString()
-        url.replace(/_/g, '/');
-    
+        console.log(url)
+        let new_url = url.replace(/_/g, "/");
+        console.log(new_url)
+
 
         await Chargers.create({
             price_per_hour: req.params.price_per_hour,
@@ -22,7 +24,7 @@ router.get('/',async (req,res,next)=>{
             region_1depth_name: req.params.region_1depth_name,
             region_2depth_name: req.params.region_2depth_name,
             region_3depth_name: req.params.region_3depth_name,
-            image_src: `${url}`,
+            image_src: `${new_url}`,
             email: req.params.email,
             owner_name: req.params.owner_name
         })
