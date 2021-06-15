@@ -8,7 +8,9 @@ router.get('/',async (req,res,next)=>{
     try{    
         
         let starting_time = req.params.starting_time;
+	    console.log(starting_time);
         let ending_time = req.params.ending_time;
+	    console.log(ending_time);
         let url = req.params.image_src
         url.toString()
         console.log(url)

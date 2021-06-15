@@ -29,9 +29,11 @@ router.get('/',async (req,res)=>{
         }
         if(available_time.length!==0){
             user_chargers[i].available = available_time
-        }
+        }else{
+		user_chargers[i].available = [];
+	}
     } // 시간 추가
-    
+    console.log(user_chargers)
     res.send(user_chargers)
     }
 )

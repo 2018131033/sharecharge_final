@@ -16,11 +16,12 @@ const applyPaymentRouter = require('./router/applyPayment');
 const addChargerRouter = require('./router/addCharger');
 
 
-app.use('/addCharger/:price_per_hour/:starting_time/:ending_time/:x/:y/:address_name/:region_1depth_name/:region_2depth_name/:region_3depth_name/:image_src/:email/:owner_name',addChargerRouter);
+//app.use('/addCharger/:price_per_hour/:starting_time/:ending_time/:x/:y/:address_name/:region_1depth_name/:region_2depth_name/:region_3depth_name/:image_src/:email/:owner_name',addChargerRouter);
 // /addCharger/10000/12/16/123.56/124.78/서울시 광진구/서울/서울/서울/kimchi/sr7418@yonsei.ac.kr/Joo
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods","POST,GET,OPTIONS,DELETE");	
   next();
 });
 app.use('/', mainRouter);
@@ -35,9 +36,7 @@ app.use('/checkForOwner/:charger_key',checkForOwnerRouter); // /checkForOwner/19
 app.use('/admitByOwner/:charger_key/:yesorno',admitByOwnerRouter); //  /admitByOwner/19/0
 app.use('/checkForRequestor/:email',checkForRequestorRouter); //  /checkForRequestor/mrseungone@gmail.com
 app.use('/applyPayment/:email/:charger_key/:starting_time/:ending_time',applyPaymentRouter); //
-
-
-
+app.use("/addCharger/:price_per_hour/:starting_time/:ending_time/:x/:y/:address_name/:region_1depth_name/:region_2depth_name/:region_3depth_name/:image_src/:email/:owner_name",addChargerRouter);
 
 
 
